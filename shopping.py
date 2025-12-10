@@ -2,7 +2,7 @@ print("-----------=4% Discount on Shopping of Rs.10000=-----------")
 
 name = input("Enter Your Good Name: ")
 
-print("-----------=Wellcome to Our Shop=-----------" , name)
+print("-----------=Welcome to Our Shop=-----------", name)
 
 items = {
     "flour": {
@@ -66,9 +66,9 @@ items = {
 }
 
 def show_items(items):
-    print("\n Available Main Items:")
-    for item in items.keys():
-        print("-", item.title())
+    print("\nAvailable Main Items:")
+    for item in items:
+        print(" -", item.title())
 
 def add_to_cart(items, cart):
     while True:
@@ -79,61 +79,69 @@ def add_to_cart(items, cart):
             print(" Item not found! Try again.")
             continue
 
-        
-        print(f"\nAvailable sub-types for {a.title()}:")
-        for sub, sizes in items[a].items():
-            size_prices = " | ".join([f"{sz}: Rs.{pr}" for sz, pr in sizes.items()])
-            print(f" {sub.title()} → {size_prices}")
+        print(f"\nAvailable Sub-categories for {a.title()}:")
+        for sub in items[a]:
+            print(" -", sub.title())
 
-        sub = input("Enter sub-type: ").lower()
+        sub = input("Enter sub-category: ").lower()
         if sub not in items[a]:
-            print(" Invalid sub-type! Try again.")
+            print(" Invalid sub-category! Try again.")
             continue
 
+        print(f"\nAvailable Child Items for {sub.title()}:")
+        for child in items[a][sub]:
+            print(" -", child.title())
+
+        child = input("Enter child item: ").lower()
+        if child not in items[a][sub]:
+            print(" Invalid child item! Try again.")
+            continue
+
+        print("\nAvailable Sizes:")
+        for sz, pr in items[a][sub][child].items():
+            print(f" {sz}: Rs.{pr}")
+
         size = input("Enter size (small/medium/large): ").lower()
-        if size not in items[a][sub]:
+        if size not in items[a][sub][child]:
             print(" Invalid size! Try again.")
             continue
 
         try:
             qty = int(input("Enter quantity: "))
-        except ValueError:
+        except:
             print(" Quantity must be a number!")
             continue
 
-        price = items[a][sub][size] * qty
+        price = items[a][sub][child][size] * qty
+
         cart.append({
             "item": a,
             "sub": sub,
+            "child": child,
             "size": size,
             "quantity": qty,
             "price": price
         })
 
-        print(f" Added {qty} x {size} {sub.title()} {a.title()} = Rs.{price}")
+        print(f"\n ✔ Added {qty} x {size} {child.title()} ({sub.title()} {a.title()}) = Rs.{price}")
 
 cart = []
 show_items(items)
 add_to_cart(items, cart)
 
-
-print("\n Your Cart:")
+print("\n----------- Your Cart -----------")
 total = 0
 for i in cart:
-    print(f"{i['quantity']} x {i['size']} {i['sub'].title()} {i['item'].title()} = Rs.{i['price']}")
+    print(f"{i['quantity']} x {i['size']} {i['child'].title()} ({i['sub'].title()} {i['item'].title()}) = Rs.{i['price']}")
     total += i['price']
 
-if total >= 10000:
-    dis = total * 0.04
-else:
-    dis = 0
-
-final_total = total - dis
+discount = total * 0.04 if total >= 10000 else 0
+final_total = total - discount
 
 print("\n----------------------------")
 print(f"Total = Rs.{total}")
-print(f"Discount = Rs.{dis}")
+print(f"Discount = Rs.{discount}")
 print(f"Sub Total = Rs.{final_total}")
 print("----------------------------")
 print(f"Total Bill = Rs.{final_total}")
-print("Thank You ", name , "For Your Shopping")
+print("Thank You", name, "For Your Shopping!")
