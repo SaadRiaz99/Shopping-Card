@@ -6,24 +6,62 @@ print("-----------=Wellcome to Our Shop=-----------" , name)
 
 items = {
     "flour": {
-        "white": {"small": 250, "medium": 700, "large": 1200},
-        "chaki": {"small": 360, "medium": 800, "large": 1300}
+        "white": {
+            "maida": {"small": 140, "medium": 280, "large": 550},
+            "fine_aata": {"small": 130, "medium": 260, "large": 520}
+        },
+        "chaki": {
+            "aata": {"small": 120, "medium": 240, "large": 480},
+            "multigrain": {"small": 160, "medium": 310, "large": 600}
+        },
+        "gram": {
+            "besan": {"small": 150, "medium": 300, "large": 580},
+            "sughar_free_besan": {"small": 170, "medium": 330, "large": 620}
+        }
     },
+
     "milk": {
-        "fresh": {"small": 60, "medium": 110, "large": 160},
-        "powder": {"small": 80, "medium": 130, "large": 180}
+        "fresh": {
+            "cow": {"small": 60, "medium": 110, "large": 160},
+            "buffalo": {"small": 70, "medium": 130, "large": 180}
+        },
+        "powder": {
+            "olpers": {"small": 80, "medium": 150, "large": 250},
+            "nestle_nido": {"small": 100, "medium": 180, "large": 300}
+        }
     },
+
     "bread": {
-        "white": {"small": 40, "medium": 70, "large": 100},
-        "brown": {"small": 50, "medium": 80, "large": 120}
+        "white": {
+            "dawn": {"small": 40, "medium": 70, "large": 100},
+            "british": {"small": 45, "medium": 75, "large": 105}
+        },
+        "brown": {
+            "dawn_brown": {"small": 50, "medium": 80, "large": 120},
+            "british_brown": {"small": 52, "medium": 85, "large": 125}
+        }
     },
+
     "rice": {
-        "basmati": {"small": 120, "medium": 220, "large": 320},
-        "sela": {"small": 130, "medium": 210, "large": 360}
+        "basmati": {
+            "super_karachi": {"small": 120, "medium": 230, "large": 350},
+            "trophy": {"small": 140, "medium": 250, "large": 380}
+        },
+        "sela": {
+            "guard_sela": {"small": 130, "medium": 220, "large": 360},
+            "shahenshah": {"small": 135, "medium": 230, "large": 370}
+        }
     },
+
     "oil": {
-        "Olivia": {"small": 400, "medium": 890, "large": 1560},
-        "Eva": {"small": 355, "medium": 505, "large": 765}
+        "cooking_oil": {
+            "dalda": {"small": 380, "medium": 820, "large": 1490},
+            "habib": {"small": 370, "medium": 780, "large": 1420}
+        },
+        "ghee": {
+            "dalda_ghee": {"small": 380, "medium": 750, "large": 1350},
+            "ss_ghee": {"small": 350, "medium": 700, "large": 1300}
+        }
     }
 }
 
